@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Управление предметами</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить предмет</button>
+</form>
+
+<h3>Список предметов</h3>
+<ul>
+{% for subject in subjects %}
+    <li>{{ subject.name }} (преподаватель: {{ subject.teacher.username }})</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'my_schedule' %}">Назад</a>
+{% endblock %}

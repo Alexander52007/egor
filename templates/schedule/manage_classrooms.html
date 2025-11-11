@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Управление аудиториями</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить аудиторию</button>
+</form>
+
+<h3>Список аудиторий</h3>
+<ul>
+{% for classroom in classrooms %}
+    <li>{{ classroom.name }} (вместимость: {{ classroom.capacity }})</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'my_schedule' %}">Назад</a>
+{% endblock %}

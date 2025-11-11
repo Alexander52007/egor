@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Добавить занятие{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card p-4 mt-4 slide-up">
+            <div class="d-flex align-items-center mb-4">
+                <i class="fas fa-plus-circle fa-2x text-primary me-3"></i>
+                <h3>Добавить новое занятие</h3>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Группа</label>
+                    {{ form.group }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Предмет</label>
+                    {{ form.subject }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Аудитория</label>
+                    {{ form.classroom }}
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Дата</label>
+                        {{ form.date }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Начало</label>
+                        {{ form.start_time }}
+                    </div>
+                </div>
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-success px-4">
+                        <i class="fas fa-save me-2"></i>Сохранить
+                    </button>
+                    <a href="{% url 'my_schedule' %}" class="btn btn-outline-secondary px-4">
+                        Отмена
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
